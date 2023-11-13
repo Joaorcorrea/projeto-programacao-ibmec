@@ -153,7 +153,7 @@ def r_carteira_publica(investimento):
     r_total_anterior = p_publico['LFT210100']*r_lft + p_publico['NTN-B 760199']*r_ntn/2
     r_esperado = round((p_publico['LFT210100']*(12.25)+p_publico['NTN-B 760199']*(6.83+5.19)),2)
     r_investido = round(investimento*(r_esperado/100 + 1), 2)
-    print(f"\nCARTEIRA DE TÍTULOS PÚBLICOS\nAtivos: LFT210100 NTN-B 760199\nInvestimento: R${investimento}\nRetorno esperado: {r_esperado}%\nRetorno Anterior: {r_total_anterior}%\nMontante final(Baseado no Retorno Estimado): R${r_investido}\n")
+    print(f"\nCARTEIRA DE TÍTULOS PÚBLICOS\nAtivos: LFT210100 NTN-B 760199\nInvestimento: R${investimento}\nPeso de cada ativo: LFT210100: {p_publico['LFT210100']*100}% e NTN-B 760199: {p_publico['NTN-B 760199']*100}%\nRetorno esperado: {r_esperado}%\nRetorno Anterior: {r_total_anterior}%\nMontante final(Baseado no Retorno Estimado): R${r_investido}\n")
 
     # Valores dos índices de comparação
     cdi_esperado = 9.15
@@ -193,7 +193,7 @@ def r_carteira_privada(investimento):
     r_total_anterior = (p_privados['RDCO34']*r_rdco) + (p_privados['CRMG15']*r_crmg)/2
     r_esperado = round(p_privados['RDCO34']*(1.9652+13.41) + (p_privados['CRMG15']*(5.19+7.42))/2, 2)
     r_investido = round(investimento*(r_esperado/100 + 1), 2)
-    print(f"\nCARTEIRA DE TÍTULOS PRIVADOS\nAtivos: CONCESS DA RODOVIA MG 05, RODIVAS DAS COLINAS AS\nInvestimento: R${investimento}\nRetorno esperado: {r_esperado}%\nRetorno Anterior: {r_total_anterior}%\nMontante final: R${r_investido}\n")
+    print(f"\nCARTEIRA DE TÍTULOS PRIVADOS\nAtivos: CONCESS DA RODOVIA MG 05, RODIVAS DAS COLINAS AS\nInvestimento: R${investimento}\nPeso de cada ativo: CRMG15: {p_privados['CRMG15']*100}% e RDCO34: {p_privados['RDCO34']*100}%\nRetorno esperado: {r_esperado}%\nRetorno Anterior: {r_total_anterior}%\nMontante final: R${r_investido}\n")
 
     # Valores esperados dos índices de comparação
     cdi_esperado = 9.97
@@ -226,6 +226,3 @@ def r_carteira_privada(investimento):
 investimento = float(input("Digite o valor a ser investido: "))
 r_carteira_publica(investimento)
 r_carteira_privada(investimento)
-
-
-
