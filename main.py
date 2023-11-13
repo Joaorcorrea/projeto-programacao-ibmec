@@ -150,8 +150,8 @@ def r_carteira_publica(investimento):
     #Chamando a função que faz os cálculos de sharpe e peso para calcular os retornos anteriores da carteira
     sharpe_pu()
     #Cálculo para retornos anteriores da carteira baseado no peso de cada título público
-    r_total_anterior = p_publico['LFT210100']*r_lft + p_publico['NTN-B 760199']*r_ntn/2
-    r_esperado = round((p_publico['LFT210100']*(10.07)+p_publico['NTN-B 760199']*(6.83+3.90)),2)
+    r_total_anterior = ((p_publico['LFT210100']*(12.25)) + (p_publico['NTN-B 760199']*(6.83+5.19))) /2
+    r_esperado = round((p_publico['LFT210100']*(12.25)+p_publico['NTN-B 760199']*(6.83+5.19)),2)
     r_investido = round(investimento*(r_esperado/100 + 1), 2)
     print(f"\nCARTEIRA DE TÍTULOS PÚBLICOS\nAtivos: LFT210100 NTN-B 760199\nInvestimento: R${investimento}\nPeso de cada ativo: LFT210100: {p_publico['LFT210100']*100}% e NTN-B 760199: {p_publico['NTN-B 760199']*100}%\nRetorno esperado: {r_esperado}%\nRetorno Anterior: {r_total_anterior}%\nMontante final(Baseado no Retorno Estimado): R${r_investido}\n")
 
@@ -190,8 +190,8 @@ def r_carteira_privada(investimento):
     sharpe_pr()
 
     #Cálculo para retornos anteriores e esperados da carteira baseado no peso de cada título privado
-    r_total_anterior = (p_privados['RDCO34']*r_rdco) + (p_privados['CRMG15']*r_crmg)/2
-    r_esperado = round(p_privados['RDCO34']*(1.9652+9.97) + (p_privados['CRMG15']*(3.90+7.42))/2, 2)
+    r_total_anterior = (p_privados['RDCO34']*(1.9652+13.41)) + (p_privados['CRMG15']*5.19+7.42)/2
+    r_esperado = round(p_privados['RDCO34']*(1.9652+13.41) + (p_privados['CRMG15']*(5.19+7.42))/2, 2)
     r_investido = round(investimento*(r_esperado/100 + 1), 2)
     print(f"\nCARTEIRA DE TÍTULOS PRIVADOS\nAtivos: CONCESS DA RODOVIA MG 05, RODIVAS DAS COLINAS AS\nInvestimento: R${investimento}\nPeso de cada ativo: CRMG15: {p_privados['CRMG15']*100}% e RDCO34: {p_privados['RDCO34']*100}%\nRetorno esperado: {r_esperado}%\nRetorno Anterior: {r_total_anterior}%\nMontante final: R${r_investido}\n")
 
