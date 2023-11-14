@@ -182,7 +182,7 @@ def r_carteira_privada(investimento):
     sharpe_pr()
 
     #Cálculo para retornos anteriores e esperados da carteira baseado no peso de cada título privado
-    r_total_anterior = round((p_privados['RDCO34']*(2.48+13.41)) + (p_privados['CRMG15']*5.19+7.38)/2, 2)
+    r_total_anterior = round((p_privados['RDCO34']*(2.48)) + (p_privados['CRMG15']*7.38)/2, 2)
     r_esperado = round(p_privados['RDCO34']*(1.9652+13.41) + (p_privados['CRMG15']*(5.19+7.42))/2, 2)
     r_investido = round(investimento*(r_esperado/100 + 1), 2)
     print(f"\nCARTEIRA DE TÍTULOS PRIVADOS\nAtivos: CONCESS DA RODOVIA MG 05, RODIVAS DAS COLINAS AS\nInvestimento: R${investimento}\nPeso de cada ativo: CRMG15: {p_privados['CRMG15']*100}% e RDCO34: {p_privados['RDCO34']*100}%\nRetorno esperado: {r_esperado}%\nRetorno Anterior: {r_total_anterior}%\nMontante final: R${r_investido}\n")
