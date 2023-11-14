@@ -143,14 +143,10 @@ def sharpe_pu():
 
 #Funções para cálculo de retornos das carteiras e faz a criação dos gráficos de comparação
 def r_carteira_publica(investimento):
-    #Cálculo de retornos anteriores dos títulos da carteira no período de 31/12/2021 a 23/10/2023
-    r_lft = round(((publicos['LFT210100'][-1] - publicos['LFT210100'][0]) / publicos['LFT210100'][0])*100, 2)
-    r_ntn = round(((publicos['NTN-B 760199'][-1] - publicos['NTN-B 760199'][0]) / publicos['NTN-B 760199'][0])*100, 2)
-
     #Chamando a função que faz os cálculos de sharpe e peso para calcular os retornos anteriores da carteira
     sharpe_pu()
     #Cálculo para retornos anteriores da carteira baseado no peso de cada título público
-    r_total_anterior = ((p_publico['LFT210100']*(12.25)) + (p_publico['NTN-B 760199']*(6.83+5.19))) /2
+    r_total_anterior = ((p_publico['LFT210100']*(0.0155736)) + (p_publico['NTN-B 760199']*(2.34)))
     r_esperado = round((p_publico['LFT210100']*(12.25)+p_publico['NTN-B 760199']*(6.83+5.19)),2)
     r_investido = round(investimento*(r_esperado/100 + 1), 2)
     print(f"\nCARTEIRA DE TÍTULOS PÚBLICOS\nAtivos: LFT210100 NTN-B 760199\nInvestimento: R${investimento}\nPeso de cada ativo: LFT210100: {p_publico['LFT210100']*100}% e NTN-B 760199: {p_publico['NTN-B 760199']*100}%\nRetorno esperado: {r_esperado}%\nRetorno Anterior: {r_total_anterior}%\nMontante final(Baseado no Retorno Estimado): R${r_investido}\n")
@@ -182,15 +178,11 @@ def r_carteira_publica(investimento):
     plt.show()
 
 def r_carteira_privada(investimento):
-    #Cálculo de retornos anteriores dos títulos da carteira no período de 31/12/2021 a 23/10/2023
-    r_rdco = round(((privados['RDCO34'][-1] - privados['RDCO34'][0]) / privados['RDCO34'][0])*100, 2)
-    r_crmg = round(((privados['CRMG15'][-1] - privados['CRMG15'][0]) / privados['CRMG15'][0])*100, 2)
-
     #Chamando a função que faz os cálculos de sharpe e peso para calcular os retornos anteriores da carteira
     sharpe_pr()
 
     #Cálculo para retornos anteriores e esperados da carteira baseado no peso de cada título privado
-    r_total_anterior = (p_privados['RDCO34']*(1.9652+13.41)) + (p_privados['CRMG15']*5.19+7.42)/2
+    r_total_anterior = round((p_privados['RDCO34']*(2.48+13.41)) + (p_privados['CRMG15']*5.19+7.38)/2, 2)
     r_esperado = round(p_privados['RDCO34']*(1.9652+13.41) + (p_privados['CRMG15']*(5.19+7.42))/2, 2)
     r_investido = round(investimento*(r_esperado/100 + 1), 2)
     print(f"\nCARTEIRA DE TÍTULOS PRIVADOS\nAtivos: CONCESS DA RODOVIA MG 05, RODIVAS DAS COLINAS AS\nInvestimento: R${investimento}\nPeso de cada ativo: CRMG15: {p_privados['CRMG15']*100}% e RDCO34: {p_privados['RDCO34']*100}%\nRetorno esperado: {r_esperado}%\nRetorno Anterior: {r_total_anterior}%\nMontante final: R${r_investido}\n")
